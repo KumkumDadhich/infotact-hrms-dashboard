@@ -1,58 +1,78 @@
 function App() {
   return (
-    <div
-      style={{
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#f4f6f8",
-      }}
-    >
+    <div style={{ display: "flex", minHeight: "100vh" }}>
+      
+      {/* Sidebar */}
       <div
         style={{
-          background: "white",
-          padding: "30px",
-          borderRadius: "10px",
-          width: "350px",
-          boxShadow: "0 0 10px rgba(0,0,0,0.1)",
+          width: "250px",
+          background: "#1e293b",
+          color: "white",
+          padding: "20px",
         }}
       >
-        <h2>HRMS Login</h2>
+        <h2>HRMS</h2>
+        <hr />
+        <p>Dashboard</p>
+        <p>Employees</p>
+        <p>Leave Requests</p>
+        <p>Payroll</p>
+        <p>Settings</p>
+      </div>
 
-        <input
-          type="email"
-          placeholder="Email"
-          style={{
-            width: "100%",
-            padding: "10px",
-            marginTop: "10px",
-          }}
-        />
+      {/* Main Content */}
+      <div
+        style={{
+          flex: 1,
+          padding: "20px",
+          background: "#f8fafc",
+        }}
+      >
+        <h1>HR Dashboard</h1>
 
-        <input
-          type="password"
-          placeholder="Password"
+        <div
           style={{
-            width: "100%",
-            padding: "10px",
-            marginTop: "10px",
-          }}
-        />
-
-        <button
-          style={{
-            width: "100%",
-            padding: "10px",
-            marginTop: "15px",
-            backgroundColor: "#2563eb",
-            color: "white",
-            border: "none",
-            cursor: "pointer",
+            display: "flex",
+            gap: "20px",
+            marginTop: "20px",
           }}
         >
-          Login
-        </button>
+          <div
+            style={{
+              background: "white",
+              padding: "20px",
+              borderRadius: "10px",
+              width: "200px",
+            }}
+          >
+            <h3>Total Employees</h3>
+            <h2>120</h2>
+          </div>
+
+          <div
+            style={{
+              background: "white",
+              padding: "20px",
+              borderRadius: "10px",
+              width: "200px",
+            }}
+          >
+            <h3>Pending Leaves</h3>
+            <h2>15</h2>
+          </div>
+
+          <div
+            style={{
+              background: "white",
+              padding: "20px",
+              borderRadius: "10px",
+              width: "200px",
+            }}
+          >
+            <h3>Payroll Processed</h3>
+            <h2>95%</h2>
+          </div>
+        </div>
       </div>
     </div>
   );
