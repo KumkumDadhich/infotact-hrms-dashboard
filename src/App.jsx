@@ -20,9 +20,11 @@ function App() {
           <h1>Welcome Kumkum 👋</h1>
           <div
               style={{
-              display: "flex",
-              gap: "20px",
+               display: "flex",
+               flexWrap: "wrap",
+               gap: "20px",
               marginTop: "30px",
+              justifyContent: "center",
   }}
 >
     <DashboardCard
