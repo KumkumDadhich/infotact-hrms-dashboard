@@ -3,7 +3,7 @@ function Sidebar() {
   return (
     <div
       style={{
-        width: "250px",
+        width: "90px",
         height: "100vh",
         background: "#1e293b",
         color: "white",
