@@ -1,3 +1,4 @@
+import EmployeePage from "./pages/EmployeePage";
 import DashboardCard from "./components/DashboardCard";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
@@ -6,6 +7,9 @@ function App() {
   return (
     <div style={{ display: "flex" }}>
       <Sidebar />
+      <Navbar />
+       <EmployeePage />
+
 
       <div
         style={{
