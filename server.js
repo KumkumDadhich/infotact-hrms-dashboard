@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import connectDB from './db.js';
 import authRoutes from './routes/authRoutes.js';
 import employeeRoutes from './routes/employeeRoutes.js';
+import attendanceRoutes from './routes/attendanceRoutes.js';
 
 // Load environment variables
 dotenv.config();
@@ -35,6 +36,7 @@ app.get('/', (req, res) => {
 // Mount Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/employees', employeeRoutes);
+app.use('/api/attendance', attendanceRoutes);
 
 // 404 Route handler
 app.use((req, res, next) => {
