@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import User from './models/User.js';
+import Attendance from './models/Attendance.js';
 
 dotenv.config();
 
@@ -11,7 +12,8 @@ const seedData = async () => {
 
     // Clear existing users
     await User.deleteMany();
-    console.log('Cleared existing users.');
+    await Attendance.deleteMany();
+    console.log('Cleared existing users and attendance.');
 
     // Sample users
     const users = [
@@ -49,8 +51,14 @@ const seedData = async () => {
         status: 'Active',
       },
     ];
+    const attendanceRecords = [
+      { name: 'Kumkum', date: '20-06-2026', checkIn: '09:00', checkOut: '05:00', status: 'Present' },
+      { name: 'Rahul', date: '20-06-2026', checkIn: '09:15', checkOut: '05:00', status: 'Late' },
+      { name: 'Neha', date: '20-06-2026', checkIn: '-', checkOut: '-', status: 'Absent' }
+    ];
 
     await User.create(users);
+    await Attendance.create(attendanceRecords);
     console.log('Database Seeded Successfully!');
     process.exit();
   } catch (error) {
