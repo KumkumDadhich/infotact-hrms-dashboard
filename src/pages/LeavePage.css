@@ -1,0 +1,18 @@
+.leave-container{
+    padding: 20px;
+}
+
+.approved{
+    color: green;
+    font-weight: bold;
+}
+
+.pending{
+    color: orange;
+    font-weight: bold;
+}
+
+.rejected{
+    color: red;
+    font-weight: bold;
+}
