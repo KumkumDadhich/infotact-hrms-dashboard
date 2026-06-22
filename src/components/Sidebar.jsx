@@ -1,33 +1,42 @@
+import { Link } from "react-router-dom";
 import "./Sidebar.css";
+
 function Sidebar() {
   return (
-    <div
-      style={{
-        width: "90px",
-        height: "100vh",
-        background: "#1e293b",
-        color: "white",
-        padding: "12px",
-        borderRadius: "8px",
-        marginBottom: "18px",
-        cursor: "pointer",
-  
-      }}
-    >
-      <h2>HRMS</h2>
+    <div className="sidebar">
+
+      <h2 className="logo">HRMS</h2>
+
       <hr />
- <p className="menu-item">🏠 Dashboard</p>
 
-      <p className="menu-item">👨‍💼 Employees</p>
+      <Link to="/" className="menu-item">
+        🏠 Dashboard
+      </Link>
 
-      <p className="menu-item">📅 Attendance</p>
+      <Link to="/employees" className="menu-item">
+        👨‍💼 Employees
+      </Link>
 
-      <p className="menu-item">💰 Payroll</p>
+      <Link to="/attendance" className="menu-item">
+        📅 Attendance
+      </Link>
 
-      <p className="menu-item">⚙️ Settings</p>
+      <Link to="/payroll" className="menu-item">
+        💰 Payroll
+      </Link>
 
-      <p className="menu-item">🚪 Logout</p>
-      
+      <Link to="/leave" className="menu-item">
+        📝 Leave
+      </Link>
+
+      <Link to="/settings" className="menu-item">
+        ⚙️ Settings
+      </Link>
+
+      <Link to="/logout" className="menu-item">
+        🚪 Logout
+      </Link>
+
     </div>
   );
 }
