@@ -1,3 +1,4 @@
+import SettingsPage from "./pages/SettingsPage";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 
@@ -27,6 +28,8 @@ function App() {
           <Route path="/payroll" element={<PayrollPage />} />
 
           <Route path="/leave" element={<LeavePage />} />
+
+          <Route path="/settings" element={<SettingsPage />} />
         </Routes>
       </div>
     </div>

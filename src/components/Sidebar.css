@@ -31,3 +31,13 @@
 .menu-item.active {
   background-color: #3b82f6;
 }
+.menu-item {
+  display: block;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+
+.menu-item:hover {
+  transform: translateX(4px);
+}
