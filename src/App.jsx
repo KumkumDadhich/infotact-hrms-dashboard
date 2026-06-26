@@ -1,6 +1,7 @@
 import SettingsPage from "./pages/SettingsPage";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
+import EmployeesPage from "./pages/EmployeesPage";
 
 import DashboardPage from "./pages/DashboardPage";
 import EmployeePage from "./pages/EmployeePage";
@@ -30,6 +31,7 @@ function App() {
           <Route path="/leave" element={<LeavePage />} />
 
           <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/employees" element={<EmployeesPage />} />
         </Routes>
       </div>
     </div>
