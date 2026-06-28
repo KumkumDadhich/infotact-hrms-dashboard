@@ -1,4 +1,6 @@
 import "./EmployeesPage.css";
+import { Link } from "react-router-dom";
+
 
 
 function EmployeesPage() {
@@ -57,7 +59,9 @@ function EmployeesPage() {
             className="search-box"
           />
 
-          <button className="add-btn">+ Add Employee</button>
+          <Link to="/add-employee">
+           <button className="add-btn">+ Add Employee</button>
+          </Link>
         </div>
       </div>
 
