@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 
 
+
 function EmployeesPage() {
   const employees = [
     {
@@ -62,6 +63,7 @@ function EmployeesPage() {
           <Link to="/add-employee">
            <button className="add-btn">+ Add Employee</button>
           </Link>
+          
         </div>
       </div>
 
@@ -100,9 +102,14 @@ function EmployeesPage() {
               </td>
 
               <td>
-                <button className="edit-btn">Edit</button>
-                <button className="delete-btn">Delete</button>
-              </td>
+  <Link to="/employee-details">
+    <button className="view-btn">View</button>
+  </Link>
+
+  <button className="edit-btn">Edit</button>
+
+  <button className="delete-btn">Delete</button>
+</td>
             </tr>
           ))}
         </tbody>
