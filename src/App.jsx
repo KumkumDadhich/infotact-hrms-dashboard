@@ -3,6 +3,7 @@ import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import EmployeesPage from "./pages/EmployeesPage";
 import AddEmployee from "./pages/AddEmployee";
+import EmployeeDetails from "./pages/EmployeeDetails";
 
 
 
@@ -30,6 +31,10 @@ function App() {
           <Route path="/attendance" element={<AttendancePage />} />
           <Route path="/leave" element={<LeavePage />} />
           <Route path="/settings" element={<SettingsPage />} />
+          <Route
+                path="/employee-details"
+                element={<EmployeeDetails />}
+              />
         </Routes>
      
       </div>

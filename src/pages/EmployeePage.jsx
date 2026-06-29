@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import "./EmployeePage.css";
+
 function EmployeePage() {
   return (
     <div  className="employee-container">
@@ -11,9 +13,7 @@ function EmployeePage() {
     type="text"
     placeholder="Search Employees..."/>
 
-    <button className="add-btn">
-    + Add Employee
-    </button>
+    
 
 </div>
 
@@ -35,6 +35,10 @@ function EmployeePage() {
             <td>IT</td>
             <td>Active</td>
             <td>
+              <Link to="/employee-details">
+  <button className="view-btn">View</button>
+</Link>
+
   <button className="edit-btn">Edit</button>
   <button className="delete-btn">Delete</button>
 </td>
@@ -45,7 +49,14 @@ function EmployeePage() {
             <td>rahul@gmail.com</td>
             <td>HR</td>
             <td>Active</td>
-            
+            <td>
+    <Link to="/employee-details">
+      <button className="view-btn">View</button>
+    </Link>
+
+    <button className="edit-btn">Edit</button>
+    <button className="delete-btn">Delete</button>
+  </td>
           </tr>
         </tbody>
       </table>
