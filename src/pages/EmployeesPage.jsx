@@ -105,8 +105,12 @@ function EmployeesPage() {
   <Link to="/employee-details">
     <button className="view-btn">View</button>
   </Link>
-
-  <button className="edit-btn">Edit</button>
+<Link to="/edit-employee">
+    <button className="edit-btn">
+        Edit
+    </button>
+</Link>
+ 
 
   <button className="delete-btn">Delete</button>
 </td>
