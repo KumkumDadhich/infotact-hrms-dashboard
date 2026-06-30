@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import EmployeesPage from "./pages/EmployeesPage";
 import AddEmployee from "./pages/AddEmployee";
 import EmployeeDetails from "./pages/EmployeeDetails";
+import EditEmployee from "./pages/EditEmployee";
 
 
 
@@ -35,7 +36,12 @@ function App() {
                 path="/employee-details"
                 element={<EmployeeDetails />}
               />
+              <Route
+            path="/edit-employee"
+        element={<EditEmployee />}
+      />
         </Routes>
+        
      
       </div>
     </div>
