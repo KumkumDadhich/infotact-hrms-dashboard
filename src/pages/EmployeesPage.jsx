@@ -1,5 +1,7 @@
 import "./EmployeesPage.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import DeleteModal from "../components/DeleteModal";
 
 
 
@@ -47,6 +49,7 @@ function EmployeesPage() {
       status: "Active",
     },
   ];
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div className="employees-page">
@@ -110,14 +113,23 @@ function EmployeesPage() {
         Edit
     </button>
 </Link>
- 
-
-  <button className="delete-btn">Delete</button>
+ <button
+  className="delete-btn"
+  onClick={() => setShowModal(true)}
+>
+  Delete
+</button>
 </td>
             </tr>
           ))}
         </tbody>
       </table>
+          {showModal && (
+  <DeleteModal
+    employeeName="Rahul Sharma"
+    onClose={() => setShowModal(false)}
+  />
+)}
     </div>
   );
 }
