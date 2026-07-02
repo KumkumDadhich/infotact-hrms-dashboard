@@ -1,19 +1,17 @@
 import "./EmployeesPage.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DeleteModal from "../components/DeleteModal";
-
-
-
+import { getEmployees } from "../services/employeeService";
 
 function EmployeesPage() {
-  const employees = [
+  const [employees, setEmployees] = useState([
     {
       id: "EMP001",
       name: "Rahul Sharma",
       department: "IT",
       position: "Frontend Developer",
-      email: "rahul@example.com",
+      email: "rahul@gmail.com",
       status: "Active",
     },
     {
@@ -21,7 +19,7 @@ function EmployeesPage() {
       name: "Priya Verma",
       department: "HR",
       position: "HR Manager",
-      email: "priya@example.com",
+      email: "priya@gmail.com",
       status: "Active",
     },
     {
@@ -29,27 +27,47 @@ function EmployeesPage() {
       name: "Amit Singh",
       department: "Finance",
       position: "Accountant",
-      email: "amit@example.com",
+      email: "amit@gmail.com",
       status: "Inactive",
     },
-    {
-      id: "EMP004",
-      name: "Neha Gupta",
-      department: "Marketing",
-      position: "Marketing Executive",
-      email: "neha@example.com",
-      status: "Active",
-    },
-    {
-      id: "EMP005",
-      name: "Arjun Mehta",
-      department: "Operations",
-      position: "Operations Manager",
-      email: "arjun@example.com",
-      status: "Active",
-    },
-  ];
+  ]);
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [search, setSearch] = useState("");
   const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    const fetchEmployees = async () => {
+      try {
+        setLoading(true);
+
+        const data = await getEmployees();
+
+        if (Array.isArray(data)) {
+          setEmployees(data);
+        } else if (data?.data) {
+          setEmployees(data.data);
+        }
+      } catch (err) {
+        console.log(err);
+
+        // Backend fail ho to dummy data hi dikhega
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchEmployees();
+  }, []);
+
+  const filteredEmployees = employees.filter((emp) => {
+    return (
+      emp.name?.toLowerCase().includes(search.toLowerCase()) ||
+      emp.department?.toLowerCase().includes(search.toLowerCase()) ||
+      emp.email?.toLowerCase().includes(search.toLowerCase())
+    );
+  });
 
   return (
     <div className="employees-page">
@@ -61,14 +79,17 @@ function EmployeesPage() {
             type="text"
             placeholder="Search Employee..."
             className="search-box"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
           />
 
           <Link to="/add-employee">
-           <button className="add-btn">+ Add Employee</button>
+            <button className="add-btn">+ Add Employee</button>
           </Link>
-          
         </div>
       </div>
+
+      {loading && <h3>Loading...</h3>}
 
       <table className="employee-table">
         <thead>
@@ -84,7 +105,7 @@ function EmployeesPage() {
         </thead>
 
         <tbody>
-          {employees.map((emp) => (
+          {filteredEmployees.map((emp) => (
             <tr key={emp.id}>
               <td>{emp.id}</td>
               <td>{emp.name}</td>
@@ -105,31 +126,32 @@ function EmployeesPage() {
               </td>
 
               <td>
-  <Link to="/employee-details">
-    <button className="view-btn">View</button>
-  </Link>
-<Link to="/edit-employee">
-    <button className="edit-btn">
-        Edit
-    </button>
-</Link>
- <button
-  className="delete-btn"
-  onClick={() => setShowModal(true)}
->
-  Delete
-</button>
-</td>
+                <Link to="/employee-details">
+                  <button className="view-btn">View</button>
+                </Link>
+
+                <Link to="/edit-employee">
+                  <button className="edit-btn">Edit</button>
+                </Link>
+
+                <button
+                  className="delete-btn"
+                  onClick={() => setShowModal(true)}
+                >
+                  Delete
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
-          {showModal && (
-  <DeleteModal
-    employeeName="Rahul Sharma"
-    onClose={() => setShowModal(false)}
-  />
-)}
+
+      {showModal && (
+        <DeleteModal
+          employeeName="Rahul Sharma"
+          onClose={() => setShowModal(false)}
+        />
+      )}
     </div>
   );
 }
