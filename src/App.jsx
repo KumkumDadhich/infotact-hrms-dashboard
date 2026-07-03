@@ -66,6 +66,14 @@ function App() {
             }
           />
           <Route
+  path="/payroll"
+  element={
+    <ProtectedRoute>
+      <PayrollPage />
+    </ProtectedRoute>
+  }
+/>
+          <Route
             path="/settings"
             element={
               <ProtectedRoute>
