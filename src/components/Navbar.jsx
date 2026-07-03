@@ -1,4 +1,14 @@
+import { useNavigate } from "react-router-dom";
+import { logout } from "../Services/authService";
+
 function Navbar() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
+
   return (
     <div
       style={{
@@ -21,6 +31,7 @@ function Navbar() {
             borderRadius: "5px",
             cursor: "pointer",
           }}
+          onClick={handleLogout}
         >
           Logout
         </button>

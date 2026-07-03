@@ -5,14 +5,12 @@ import EmployeesPage from "./pages/EmployeesPage";
 import AddEmployee from "./pages/AddEmployee";
 import EmployeeDetails from "./pages/EmployeeDetails";
 import EditEmployee from "./pages/EditEmployee";
-
-
-
+import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
-
 import AttendancePage from "./pages/AttendancePage";
 import PayrollPage from "./pages/PayrollPage";
 import LeavePage from "./pages/LeavePage";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -26,20 +24,71 @@ function App() {
 
         
         <Routes>
-          <Route path="/" element={<DashboardPage />} />
-          <Route path="/employees" element={<EmployeesPage />} />
-          <Route path="/add-employee" element={<AddEmployee />} />
-          <Route path="/attendance" element={<AttendancePage />} />
-          <Route path="/leave" element={<LeavePage />} />
-          <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route
-                path="/employee-details"
-                element={<EmployeeDetails />}
-              />
-              <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <DashboardPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/employees"
+            element={
+              <ProtectedRoute>
+                <EmployeesPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/add-employee"
+            element={
+              <ProtectedRoute>
+                <AddEmployee />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/attendance"
+            element={
+              <ProtectedRoute>
+                <AttendancePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/leave"
+            element={
+              <ProtectedRoute>
+                <LeavePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <ProtectedRoute>
+                <SettingsPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/employee-details"
+            element={
+              <ProtectedRoute>
+                <EmployeeDetails />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="/edit-employee"
-        element={<EditEmployee />}
-      />
+            element={
+              <ProtectedRoute>
+                <EditEmployee />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
         
      

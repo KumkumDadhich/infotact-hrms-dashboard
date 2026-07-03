@@ -1,6 +1,6 @@
 import "./DeleteModal.css";
 
-function DeleteModal({ employeeName, onClose }) {
+function DeleteModal({ employeeName, onClose, onConfirm, isDeleting, error }) {
   return (
     <div className="modal-overlay">
       <div className="modal-box">
@@ -9,23 +9,27 @@ function DeleteModal({ employeeName, onClose }) {
 
         <p>
           Are you sure you want to delete
-          <strong> {employeeName}</strong>?
+          <strong> {employeeName || "this employee"}</strong>?
         </p>
+
+        {error && <p className="delete-error">{error}</p>}
 
         <div className="modal-buttons">
 
           <button
             className="cancel-btn"
             onClick={onClose}
+            disabled={isDeleting}
           >
             Cancel
           </button>
 
           <button
             className="confirm-delete-btn"
-            onClick={onClose}
+            onClick={onConfirm}
+            disabled={isDeleting}
           >
-            Delete
+            {isDeleting ? "Deleting..." : "Delete"}
           </button>
 
         </div>

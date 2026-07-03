@@ -14,30 +14,36 @@
 
 .menu-item {
   display: block;
-  color: white;
   text-decoration: none;
-
+  color: white;
+  font-weight: 500;
   padding: 12px;
   border-radius: 8px;
   margin-bottom: 10px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .menu-item:hover {
   background-color: #334155;
+  transform: translateX(4px);
   cursor: pointer;
 }
 
 .menu-item.active {
   background-color: #3b82f6;
 }
-.menu-item {
-  display: block;
-  text-decoration: none;
-  color: white;
-  font-weight: 500;
-}
 
-.menu-item:hover {
-  transform: translateX(4px);
+.menu-item button, 
+button.menu-item {
+  background: transparent; 
+  border: none;            
+  outline: none;          
+  color: inherit;         
+  font-family: inherit;    
+  font-size: inherit;      
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0;              
+  cursor: pointer;      
 }

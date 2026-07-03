@@ -2,7 +2,10 @@ import "./EmployeesPage.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import DeleteModal from "../components/DeleteModal";
-import { getEmployees } from "../services/employeeService";
+import {
+  getEmployees,
+  deleteEmployee,
+} from "../services/employeeService";
 
 function EmployeesPage() {
   const [employees, setEmployees] = useState([
@@ -36,6 +39,39 @@ function EmployeesPage() {
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [selectedEmployee, setSelectedEmployee] = useState(null);
+  const [deleteError, setDeleteError] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const handleDeleteClick = (employee) => {
+    setSelectedEmployee(employee);
+    setDeleteError("");
+    setShowModal(true);
+  };
+
+  const handleConfirmDelete = async () => {
+    if (!selectedEmployee) return;
+
+    try {
+      setIsDeleting(true);
+      const id = selectedEmployee._id || selectedEmployee.id;
+      await deleteEmployee(id);
+      setEmployees((prevEmployees) =>
+        prevEmployees.filter(
+          (emp) => (emp._id || emp.id) !== id
+        )
+      );
+      setShowModal(false);
+      setSelectedEmployee(null);
+    } catch (err) {
+      console.error("Delete employee failed", err);
+      setDeleteError(
+        err.response?.data?.message || err.message || "Could not delete employee"
+      );
+    } finally {
+      setIsDeleting(false);
+    }
+  };
 
   useEffect(() => {
     const fetchEmployees = async () => {
@@ -106,8 +142,8 @@ function EmployeesPage() {
 
         <tbody>
           {filteredEmployees.map((emp) => (
-            <tr key={emp.id}>
-              <td>{emp.id}</td>
+            <tr key={emp._id ?? emp.id}>
+              <td>{emp._id ?? emp.id}</td>
               <td>{emp.name}</td>
               <td>{emp.department}</td>
               <td>{emp.position}</td>
@@ -136,7 +172,7 @@ function EmployeesPage() {
 
                 <button
                   className="delete-btn"
-                  onClick={() => setShowModal(true)}
+                  onClick={() => handleDeleteClick(emp)}
                 >
                   Delete
                 </button>
@@ -148,8 +184,15 @@ function EmployeesPage() {
 
       {showModal && (
         <DeleteModal
-          employeeName="Rahul Sharma"
-          onClose={() => setShowModal(false)}
+          employeeName={selectedEmployee?.name}
+          onClose={() => {
+            setShowModal(false);
+            setSelectedEmployee(null);
+            setDeleteError("");
+          }}
+          onConfirm={handleConfirmDelete}
+          isDeleting={isDeleting}
+          error={deleteError}
         />
       )}
     </div>

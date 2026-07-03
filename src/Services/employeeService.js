@@ -1,10 +1,10 @@
 import axios from "axios";
+import { getToken } from "./authService";
 
 const API_BASE_URL = "http://localhost:5000/api/employees";
 
-// Get JWT Token from localStorage
 const getAuthConfig = () => {
-  const token = localStorage.getItem("token");
+  const token = getToken();
 
   return {
     headers: {

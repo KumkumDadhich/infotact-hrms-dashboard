@@ -49,9 +49,16 @@ function Sidebar() {
       ⚙️ Settings
     </Link>
 
-      <Link to="/logout" className="menu-item">
+      <button
+        className="menu-item"
+        onClick={() => {
+          localStorage.removeItem("token");
+          localStorage.removeItem("user");
+          window.location.href = "/login";
+        }}
+      >
         🚪 Logout
-      </Link>
+      </button>
 
     </div>
   );
