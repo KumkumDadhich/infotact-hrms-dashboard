@@ -6,9 +6,10 @@ function PayrollPage() {
       <h1>Payroll</h1>
 
       <input
-        type="text"
-        placeholder="Search Employee..."
-      />
+  type="text"
+  placeholder="Search Employee..."
+  className="search-box"
+/>
 
       <table>
         <thead>
@@ -28,7 +29,9 @@ function PayrollPage() {
             <td>IT</td>
             <td>₹50,000</td>
             <td>₹5,000</td>
-            <td className="paid">Paid</td>
+           <td>
+  <span className="status-paid">Paid</span>
+</td>
 
           </tr>
 
@@ -37,7 +40,9 @@ function PayrollPage() {
             <td>HR</td>
             <td>₹40,000</td>
             <td>₹2,000</td>
-           <td className="pending">Pending</td>
+           <td>
+  <span className="status-pending">Pending</span>
+</td>
           </tr>
 
         </tbody>
