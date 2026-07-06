@@ -1,57 +1,98 @@
+/* Full Page */
 .login-page {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
-  background: #f4f6fb;
+  align-items: center;
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  font-family: "Segoe UI", sans-serif;
 }
 
+/* Card */
 .login-card {
-  width: 360px;
-  padding: 32px;
+  width: 380px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  background: #ffffff;
+  padding: 35px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+.login-logo {
+  font-size: 45px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .login-card h2 {
-  margin-bottom: 24px;
-  font-size: 24px;
-}
-
-.login-card label {
-  display: block;
+  text-align: center;
+  color: #1e3a8a;
   margin-bottom: 8px;
-  font-weight: 600;
 }
 
-.login-card input {
-  width: 100%;
-  padding: 10px 12px;
-  margin-bottom: 16px;
-  border: 1px solid #ced4da;
-  border-radius: 8px;
-  outline: none;
+.login-subtitle {
+  text-align: center;
+  color: #6b7280;
+  margin-bottom: 25px;
   font-size: 14px;
 }
 
+/* Labels */
+.login-card label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Inputs */
+.login-card input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 18px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.login-card input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 6px rgba(37, 99, 235, 0.3);
+}
+
+/* Button */
 .login-card button {
   width: 100%;
   padding: 12px;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   background: #2563eb;
   color: white;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.login-card button:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
 }
 
 .login-card button:disabled {
-  opacity: 0.7;
+  background: #93c5fd;
   cursor: not-allowed;
 }
 
+/* Error */
 .login-error {
-  margin-bottom: 16px;
-  color: #d32f2f;
+  background: #fee2e2;
+  color: #dc2626;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 14px;
 }

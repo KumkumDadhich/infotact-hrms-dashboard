@@ -12,15 +12,17 @@ import PayrollPage from "./pages/PayrollPage";
 import LeavePage from "./pages/LeavePage";
 import ProtectedRoute from "./components/ProtectedRoute";
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 function App() {
+  const location = useLocation();
+const hideLayout = location.pathname === "/login";
   return (
     <div style={{ display: "flex" }}>
-      <Sidebar />
+      {!hideLayout && <Sidebar />}
 
       <div style={{ flex: 1 }}>
-        <Navbar />
+        {!hideLayout && <Navbar />}
 
         
         <Routes>

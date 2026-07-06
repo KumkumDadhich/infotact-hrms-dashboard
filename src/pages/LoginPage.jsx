@@ -8,6 +8,7 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -30,7 +31,11 @@ function LoginPage() {
   return (
     <div className="login-page">
       <div className="login-card">
-        <h2>HRMS Login</h2>
+        <h2>HRMS Portal</h2>
+
+        <p className="login-subtitle">
+          Welcome back! Please sign in to continue.
+        </p>
 
         {error && <p className="login-error">{error}</p>}
 
@@ -40,8 +45,8 @@ function LoginPage() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
             placeholder="admin@hrms.com"
+            required
           />
 
           <label>Password</label>
@@ -49,8 +54,8 @@ function LoginPage() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
             placeholder="password123"
+            required
           />
 
           <button type="submit" disabled={loading}>
