@@ -16,3 +16,16 @@ h1{
   font-size: 28px;
   margin-bottom: 20px;
 }
+.change-up{
+    color:#10b981;
+    font-size:13px;
+    font-weight:600;
+    margin-top:5px;
+}
+
+.change-down{
+    color:#ef4444;
+    font-size:13px;
+    font-weight:600;
+    margin-top:5px;
+}

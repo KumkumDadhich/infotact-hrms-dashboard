@@ -1,41 +1,71 @@
-import { useNavigate } from "react-router-dom";
-import { logout } from "../Services/authService";
-
+import "./Navbar.css";
+import { FaBell, FaSearch } from "react-icons/fa";
+import { useState } from "react";
+import profileImage from "../assets/hero.png";
 function Navbar() {
-  const navigate = useNavigate();
+  const [showNotifications, setShowNotifications] = useState(false);
 
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
+const notifications = [
+  "Rahul applied for leave",
+  "Payroll generated successfully",
+  "Attendance updated",
+];
 
   return (
-    <div
-      style={{
-        background: "white",
-        padding: "20px",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
-        color: "black",
-      }}
-    >
-      <h2>HRMS Dashboard</h2>
+    <div className="navbar">
 
-      <div>
-        <button
-          style={{
-            padding: "8px 15px",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
-          onClick={handleLogout}
-        >
-          Logout
-        </button>
+      <div className="navbar-left">
+        <FaSearch className="search-icon" />
+
+        <input
+          type="text"
+          placeholder="Search employees..."
+          className="navbar-search"
+        />
       </div>
+
+      <div className="navbar-right">
+
+        <div
+          className="notification"
+          onClick={() =>
+            setShowNotifications(!showNotifications)
+          }
+        >
+          <FaBell />
+
+          <span className="badge">
+  {notifications.length}
+</span>
+
+          {showNotifications && (
+            <div className="notification-dropdown">
+
+              <h4>Notifications</h4>
+
+             {notifications.map((item, index) => (
+  <p key={index}>🔔 {item}</p>
+))}
+            </div>
+          )}
+
+        </div>
+
+        <div className="profile">
+<img
+  src={profileImage}
+  alt="Profile"
+  className="profile-img"
+/>
+
+          <div>
+            <h4>Admin</h4>
+            <small>HR Manager</small>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   );
 }
