@@ -6,21 +6,34 @@ import DashboardBanner from "../components/DashboardBanner";
 import "./Dashboard.css";
 
 function DashboardPage() {
-  // Get logged-in user from localStorage
- const user = JSON.parse(localStorage.getItem("user"));
+  // Get logged-in user
+  const user = JSON.parse(localStorage.getItem("user")) || {};
+
+  // Greeting based on current time
+  const hour = new Date().getHours();
+
+  let greeting = "Good Evening";
+
+  if (hour < 12) {
+    greeting = "Good Morning";
+  } else if (hour < 18) {
+    greeting = "Good Afternoon";
+  }
 
   return (
     <div className="dashboard-container">
 
       <div className="dashboard-header">
         <div>
+
           <h1>
-            Welcome back, {user.name || "Admin"} 👋
+            {greeting}, {user.name || "Admin"} 👋
           </h1>
 
-        <p>
-  Here's what's happening in your HRMS today.
-</p>
+          <p>
+            Welcome to your HRMS Dashboard. Monitor employees, attendance, payroll, and daily activities from one place.
+          </p>
+
         </div>
       </div>
 
